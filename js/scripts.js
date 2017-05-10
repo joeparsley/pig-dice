@@ -30,11 +30,11 @@ var Dice = function() {
 Dice.prototype.roll = function () {
 return Math.floor(Math.random() * this.sides) + 1
 }
-
 // adds hold() method to the Dice prototype
-// Dice.prototype.hold = function ()  {
-//
-// }
+Dice.prototype.hold = function () {
+
+}
+
 
 //User Interface
 $(document).ready(function() {
@@ -48,17 +48,20 @@ $(document).ready(function() {
   $("#rollOne").click(function(event) {
     event.preventDefault();
     $(".roll-result").empty();
-    var diceRoll = new Dice();
-    var currentRoll = diceRoll.roll();
-    $(".roll-result").append(currentRoll);
+    var diceRollOne = new Dice();
+    var currentRollOne = diceRollOne.roll();
+    $(".roll-result").append(currentRollOne);
   });
     $("#rollTwo").click(function(event) {
       event.preventDefault();
       $(".roll-result-2").empty();
-      var diceRoll = new Dice();
-      var currentRoll = diceRoll.roll();
-      $(".roll-result-2").append(currentRoll);
+      var diceRollTwo = new Dice();
+      var currentRollTwo = diceRollTwo.roll();
+      $(".roll-result-2").append(currentRollTwo);
+
+      console.log(currentRollTwo);
   });
+
 });    // player in turn rolls die
     // jquery shows current roll score
 
