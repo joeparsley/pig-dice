@@ -13,41 +13,25 @@
       <div class="jumbotron">
         <h1>Pig Dice</h1>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <!-- // USER NAME INPUT FIELD -->
-          <form id="player-name-input">
-            <div class="form-group">
-              <label for="player-1-name">Player 1:</label>
-              <input type="name" class="form-control" id="player-1-name" placeholder="Joe Parsley">
-            </div>
-            <div class="form-group">
-              <label for="player-2-name">Player 2:</label>
-              <input type="name" class="form-control" id="player-2-name" placeholder="Dylan Dills">
-            </div>
-            <!-- SUBMIT BUTTON FOR NAMES -->
-             <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-        </div>
-      </div>
+
       <div class="row">
         <div class="col-md-6">
-          <h1><span>player1name</span></h1>
-          <p><span>player1score</span></p>
-          <p><span>player1current roll</span></p>
+          <h2><span>Player One, it's your turn! Roll!</span></h2>
           <!-- // buttons for roll and hold for Player 1  -->
-          <button type="button" class="btn btn-success">Roll</button>
+          <button type="button" class="btn btn-success" id= "rollOne">Roll</button>
 
           <button type="button" class="btn btn-danger">Hold</button>
+
+          <h2>Player One Score:<span class="roll-result"></span></h2>
         </div>
         <div class="col-md-6">
-          <h1><span>player2name</span></h1>
-          <p><span>player2score</span></p>
-          <p><span>player2current roll</span></p>
+          <h2><span>Player Two, it's your turn! Roll!</span></h2>
           <!-- // buttons for roll and hold for Player 2  -->
-          <button type="button" class="btn btn-success">Roll</button>
+          <button type="button" class="btn btn-success" id = "rollTwo">Roll</button>
 
           <button type="button" class="btn btn-danger">Hold</button>
+
+          <h2>Player Two Score:<span class = "roll-result-2"></span></h2>
         </div>
       </div>
     </div>
