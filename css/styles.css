@@ -1,0 +1,8 @@
+h1 {
+  border-style: groove red;
+  border-width: medium;
+}
+
+p {
+  border-style: ridge green;
+}
