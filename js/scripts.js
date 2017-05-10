@@ -47,12 +47,14 @@ $(document).ready(function() {
   // button for rolling
   $("#rollOne").click(function(event) {
     event.preventDefault();
+    $(".roll-result").empty();
     var diceRoll = new Dice();
     var currentRoll = diceRoll.roll();
     $(".roll-result").append(currentRoll);
   });
     $("#rollTwo").click(function(event) {
       event.preventDefault();
+      $(".roll-result-2").empty();
       var diceRoll = new Dice();
       var currentRoll = diceRoll.roll();
       $(".roll-result-2").append(currentRoll);
