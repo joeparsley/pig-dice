@@ -24,6 +24,17 @@ Player.prototype.addTurnTotal = function(array) {
   this.runningScore = result;
 }
 
+// Clear runningScore if player rolls a 1:
+Player.prototype.ifOne = function(dice) {
+  if (dice === 1) {
+  this.runningScore = 0;
+  this.turnTotal = [];
+  }
+return this.runningScore;
+return this.turnTotal;
+}
+
+
 // Constructor for Dice
 var Dice = function() {
   this.sides = 6;
@@ -58,7 +69,7 @@ $(document).ready(function() {
     var currentRollOne = diceRollOne.roll();
     var playerTurn = playerOne.turnTotal.push(currentRollOne);
     var run = playerOne.addTurnTotal(playerOne.turnTotal);
-
+    var ifitsOne = playerOne.ifOne(currentRollOne)
 // displaying results for Player 1 on HTML to user
     $(".roll-result").text(currentRollOne);
     $(".runningTotal").text(playerOne.runningScore);
@@ -75,7 +86,7 @@ $(document).ready(function() {
       var currentRollTwo = diceRollTwo.roll();
       var playerTurn = playerTwo.turnTotal.push(currentRollTwo)
       var run = playerTwo.addTurnTotal(playerTwo.turnTotal);
-
+      var ifitsOne = playerTwo.ifOne(currentRollTwo)
 // displaying results for Player 2 on HTML for user
       $(".roll-result-2").text(currentRollTwo);
       $(".runningTotal2").text(playerTwo.runningScore);
