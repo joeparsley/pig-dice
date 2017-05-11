@@ -13,22 +13,27 @@ var Game = function(playerOneScore, playerTwoScore) {
 // }
 
 // Constructor for Player
-var Player = function(playerName, currentScore) {
+var Player = function(playerName, currentScore, runningScore) {
   this.playerName = playerName;
   this.currentScore = currentScore;
+  this.runningScore = runningScore;
   this.turnTotal = [];
 }
 // add addTotal() method to for Player prototype (so it works for all instances of Player)
-Player.prototype.pushRoll = function(dieInput) {
-
+Player.prototype.addTurnTotal = function(array) {
+  var result = 0;
+  for (var i = 0; i < array.length; i++) {
+    result += array[i];
+  }
+  this.runningScore = result;
 }
-// Die Constructor!
+
 var Dice = function() {
   this.sides = 6;
 }
 // adds roll() method to the Dice prototype
 Dice.prototype.roll = function () {
-return Math.floor(Math.random() * this.sides) + 1
+return Math.floor(Math.random() * this.sides + 1);
 }
 // adds hold() method to the Dice prototype
 Dice.prototype.hold = function () {
@@ -38,8 +43,8 @@ Dice.prototype.hold = function () {
 
 //User Interface
 $(document).ready(function() {
-  var playerOne = new Player("playerOneName", 0);
-  var playerTwo = new Player("playerTwoName", 0);
+  var playerOne = new Player("playerOneName", 0, 0);
+  var playerTwo = new Player("playerTwoName", 0, 0);
   // instantiate new game?
   var game = new Game();
   // this is instantiating a Player object using the Player constructor
@@ -50,7 +55,8 @@ $(document).ready(function() {
     $(".roll-result").empty();
     var diceRollOne = new Dice();
     var currentRollOne = diceRollOne.roll();
-    var playerTurn = playerOne.turnTotal.push(currentRollOne)
+    var playerTurn = playerOne.turnTotal.push(currentRollOne);
+    var run = playerOne.addTurnTotal(playerOne.turnTotal);
     $(".roll-result").append(currentRollOne);
     console.log(currentRollOne)
     console.log(playerOne);
@@ -61,6 +67,7 @@ $(document).ready(function() {
       var diceRollTwo = new Dice();
       var currentRollTwo = diceRollTwo.roll();
       var playerTurn = playerTwo.turnTotal.push(currentRollTwo)
+      var run = playerTwo.addTurnTotal(playerTwo.turnTotal);
       $(".roll-result-2").append(currentRollTwo);
       console.log(currentRollTwo);
       console.log(playerTwo);
