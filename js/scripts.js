@@ -1,16 +1,11 @@
-//Business Logic
+// BUSINESS LOGIC //
+
 // Constructor for Game
 var Game = function(playerOneScore, playerTwoScore) {
   this.playerOneScore = playerOneScore;
   this.playerTwoScore = playerTwoScore;
   this.winningScore = 100;
 }
-
-// Game prototype
-// Game.prototype.winCon = function() {
-//   if (playerOneScore || playerTwoScore === 100)
-//   return alert("winner")
-// }
 
 // Constructor for Player
 var Player = function(playerName, currentScore, runningScore) {
@@ -19,7 +14,8 @@ var Player = function(playerName, currentScore, runningScore) {
   this.runningScore = runningScore;
   this.turnTotal = [];
 }
-// add addTotal() method to for Player prototype (so it works for all instances of Player)
+
+// For loop that adds objects inside array together to create running total
 Player.prototype.addTurnTotal = function(array) {
   var result = 0;
   for (var i = 0; i < array.length; i++) {
@@ -28,52 +24,63 @@ Player.prototype.addTurnTotal = function(array) {
   this.runningScore = result;
 }
 
+// Constructor for Dice
 var Dice = function() {
   this.sides = 6;
 }
-// adds roll() method to the Dice prototype
+
+// adds roll() method to the Dice prototype, generates random number from 1 to 6
 Dice.prototype.roll = function () {
 return Math.floor(Math.random() * this.sides + 1);
 }
-// adds hold() method to the Dice prototype
+
+// adds hold() method to the Dice prototype, which will add running total to grand total
 Dice.prototype.hold = function () {
 
 }
 
 
-//User Interface
+// USER INTERFACE //
+
+// this is instantiating a Player object using the Player constructor
 $(document).ready(function() {
   var playerOne = new Player("playerOneName", 0, 0);
   var playerTwo = new Player("playerTwoName", 0, 0);
-  // instantiate new game?
+// instantiate new game
   var game = new Game();
-  // this is instantiating a Player object using the Player constructor
 
-  // button for rolling
+// click function for player 1
   $("#rollOne").click(function(event) {
     event.preventDefault();
-    $(".roll-result").empty();
+
+// rolls dice, pushes result to turnTotal array
     var diceRollOne = new Dice();
     var currentRollOne = diceRollOne.roll();
     var playerTurn = playerOne.turnTotal.push(currentRollOne);
     var run = playerOne.addTurnTotal(playerOne.turnTotal);
-    $(".roll-result").append(currentRollOne);
+
+// displaying results for Player 1 on HTML to user
+    $(".roll-result").text(currentRollOne);
+    $(".runningTotal").text(playerOne.runningScore);
     console.log(currentRollOne)
     console.log(playerOne);
   });
+
+// click function for player 2
     $("#rollTwo").click(function(event) {
       event.preventDefault();
-      $(".roll-result-2").empty();
+
+// rolls dice, pushes result to turnTotal array
       var diceRollTwo = new Dice();
       var currentRollTwo = diceRollTwo.roll();
       var playerTurn = playerTwo.turnTotal.push(currentRollTwo)
       var run = playerTwo.addTurnTotal(playerTwo.turnTotal);
-      $(".roll-result-2").append(currentRollTwo);
+
+// displaying results for Player 2 on HTML for user
+      $(".roll-result-2").text(currentRollTwo);
+      $(".runningTotal2").text(playerTwo.runningScore);
       console.log(currentRollTwo);
       console.log(playerTwo);
   });
 
-});    // player in turn rolls die
-    // jquery shows current roll score
-
-  // button for holding
+});
