@@ -1,12 +1,5 @@
 // BUSINESS LOGIC //
 
-// Constructor for Game
-var Game = function(playerOneScore, playerTwoScore) {
-  this.playerOneScore = playerOneScore;
-  this.playerTwoScore = playerTwoScore;
-  this.winningScore = 100;
-}
-
 // Constructor for Player
 var Player = function(playerName, runningScore, grandScore) {
   this.playerName = playerName;
@@ -43,6 +36,11 @@ Player.prototype.hold = function(total) {
     result += total[i];
   }
   this.grandScore = result;
+  if (result >= 100) {
+    alert ("YOU WON!!")
+  }
+  this.runningScore = 0;
+  this.turnTotal = [];
 }
 
 // Constructor for Dice
@@ -62,8 +60,6 @@ $(document).ready(function() {
   // this is instantiating a Player object using the Player constructor
   var playerOne = new Player("playerOneName", 0, 0);
   var playerTwo = new Player("playerTwoName", 0, 0);
-// instantiate new game
-  var game = new Game();
 
 
 // CLICK FUNCTION FOR PLAYER 1 //
