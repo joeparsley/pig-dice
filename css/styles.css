@@ -1,7 +1,45 @@
+body {
+  background-image: url(../img/babe.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 50px;
+}
+
+
 h1 {
   text-align: center;
+  font-family: Luckiest Guy;
+  font-size: 100px;
+  letter-spacing: 3px;
+}
+
+h2 {
+  font-family: Luckiest Guy;
+  letter-spacing: 3px;
+  font-size: 20px;
+}
+
+h3 {
+  font-family: Modak;
+  font-size: 50px;
+  color: #C84B84;
+}
+
+h4 {
+  font-family: Open Sans;
+  font size: 20px;
 }
 
 p {
   border-style: ridge green;
+}
+
+.btn {
+  text-align: center;
 }
