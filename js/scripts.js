@@ -16,11 +16,11 @@ var Game = function(playerOneScore, playerTwoScore) {
 var Player = function(playerName, currentScore) {
   this.playerName = playerName;
   this.currentScore = currentScore;
+  this.turnTotal = [];
 }
 // add addTotal() method to for Player prototype (so it works for all instances of Player)
-Player.prototype.addTotal = function(dieInput) {
-  this.currentScore = this.currentScore + dieInput;
-  return this.currentScore;
+Player.prototype.pushRoll = function(dieInput) {
+
 }
 // Die Constructor!
 var Dice = function() {
@@ -50,16 +50,20 @@ $(document).ready(function() {
     $(".roll-result").empty();
     var diceRollOne = new Dice();
     var currentRollOne = diceRollOne.roll();
+    var playerTurn = playerOne.turnTotal.push(currentRollOne)
     $(".roll-result").append(currentRollOne);
+    console.log(currentRollOne)
+    console.log(playerOne);
   });
     $("#rollTwo").click(function(event) {
       event.preventDefault();
       $(".roll-result-2").empty();
       var diceRollTwo = new Dice();
       var currentRollTwo = diceRollTwo.roll();
+      var playerTurn = playerTwo.turnTotal.push(currentRollTwo)
       $(".roll-result-2").append(currentRollTwo);
-
       console.log(currentRollTwo);
+      console.log(playerTwo);
   });
 
 });    // player in turn rolls die
